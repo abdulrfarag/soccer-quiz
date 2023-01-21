@@ -3,6 +3,10 @@ let option = document.querySelectorAll(".option");
 var timerEl = document.querySelector("#time");
 var choicesEl = document.querySelector(".choices");
 var answerEl = document.querySelector("#answer");
+var endGameEl = document.querySelector("#end-game");
+var scoreEl = document.querySelector(".score");
+var initialsFormEl = document.querySelector(".initials-form");
+var submittedEl = document.querySelector("#submitted");
 let currentQuestionIndex = 0;
 
 let questions = [
@@ -47,7 +51,7 @@ function getQuestion() {
   questionText.textContent = currentQuestion.question;
 
   //loop throught the four answers, for each one create a button and append it to answerEl
-
+  answerEl.innerHTML = "";
   for (choice in currentQuestion.choices) {
     var choicebtn = document.createElement("button");
     choicebtn.textContent = currentQuestion.choices[choice];
@@ -55,45 +59,28 @@ function getQuestion() {
     choicebtn.addEventListener("click", evaluation);
 
     answerEl.appendChild(choicebtn);
-    console.log(currentQuestion.choices[choice]);
   }
 }
 
 function evaluation(e) {
-
-  var isCorrect = (e.target.dataset.letter=== questions[currentQuestionIndex].answer);
+  var isCorrect =
+    e.target.dataset.letter === questions[currentQuestionIndex].answer;
   if (!isCorrect) {
-    time -= 10;
+    time -= 25;
+    if (time <= 0) endGame();
     timerEl.textContent = time;
   }
-}
 
-// start quiz function with all the actions needed
-
-function renderchoices(currentQuestion) {
-  // loop over choices
-  currentQuestion.choices.forEach(function (choice, i) {
-    // create new button for each choice
-    var choicebtn = document.createElement("button");
-    choicebtn.setAttribute("class", "choice");
-    choicebtn.setAttribute("value", choice);
-
-    choicebtn.textContent = i + 1 + ". " + choice;
-
-    // attach click event listener to each choice
-    // choicebtn.onclick = questionClick;
-
-    // display on the page
-    document.querySelector(".choices").appendChild(choicebtn);
-  });
-  // for (var i=0; i<option.length; i++) {
-  //      option[i].textContent=questions[currentQuestionIndex].choices[i];
-  //    }
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    getQuestion();
+  } else endGame();
 }
 
 function clockTick() {
   // update time
   time--;
+  if (time <= 0) endGame();
   timerEl.textContent = time;
 
   // check if user ran out of time
@@ -101,3 +88,38 @@ function clockTick() {
   //   quizEnd();
   // }
 }
+
+function endGame() {
+  console.log("the game is over");
+  clearInterval(timerId);
+  choicesEl.classList.add("hide");
+  answerEl.classList.add("hide");
+  endGameEl.classList.remove("hide");
+  scoreEl.textContent = `your final score is ${time >= 0 ? time : 0}`;
+}
+
+function submitScore(e) {
+  e.preventDefault();
+
+  console.log(time >= 0 ? time : 0);
+  console.log(submittedEl.value);
+
+
+  if (localStorage.getItem("scoreArray")) {
+    const arrayFromStorage = JSON.parse(localStorage.getItem("scoreArray"));
+    arrayFromStorage.push({
+      initials: submittedEl.value,
+      score: time >= 0 ? time : 0,
+    });
+    localStorage.setItem("scoreArray", JSON.stringify(arrayFromStorage));
+  } else {
+    localStorage.setItem(
+      "scoreArray",
+      JSON.stringify([
+        { initials: submittedEl.value, score: time >= 0 ? time : 0 },
+      ])
+    );
+  }
+}
+
+initialsFormEl.addEventListener("submit", submitScore);
