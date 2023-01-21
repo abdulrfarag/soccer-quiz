@@ -50,9 +50,21 @@ function getQuestion() {
 
   for (choice in currentQuestion.choices) {
     var choicebtn = document.createElement("button");
-    choicebtn.textContent=(currentQuestion.choices[choice]);
+    choicebtn.textContent = currentQuestion.choices[choice];
+    choicebtn.dataset.letter = choice;
+    choicebtn.addEventListener("click", evaluation);
+
     answerEl.appendChild(choicebtn);
     console.log(currentQuestion.choices[choice]);
+  }
+}
+
+function evaluation(e) {
+
+  var isCorrect = (e.target.dataset.letter=== questions[currentQuestionIndex].answer);
+  if (!isCorrect) {
+    time -= 10;
+    timerEl.textContent = time;
   }
 }
 
