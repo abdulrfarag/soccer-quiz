@@ -1,11 +1,12 @@
 let questionText= document.querySelector('.question-text');
 let option= document.querySelectorAll('.option');
 var timerEl = document.querySelector("#time");
+var choicesEl = document.querySelector('.choices');
+var answerEl = document.querySelector('#answer');
 
 let questions= [
     {
         question:'Which country won the World Cup in 1998?', 
-        // choices: ['Germany', 'Italy', 'France', 'Argentina'],
         choices: {a: "Germany", b: 'Italy', c: 'France', d: 'Argentina'},
         answer: 'c'
     },
@@ -34,6 +35,8 @@ for (var i=0; i<option.length; i++) {
 let startQuiz= document.querySelector('#start-quiz');
 startQuiz.addEventListener('click', function(){
     document.querySelector("#startView").setAttribute("class", "hide");
+    choicesEl.classList.remove('hide')
+    answerEl.classList.remove('hide')
     timerId = setInterval(clockTick, 1000);
     timerEl.textContent = time;
     getQuestion();

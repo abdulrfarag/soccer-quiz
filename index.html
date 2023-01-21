@@ -1,99 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
     <title>soccer quiz</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body>
+  <body>
     <main>
-        <div id="startView" class="show">
-            <p>soccer quiz challenge</p>
-            <button value="start" id="start-quiz">start quiz</button>
-        </div>
-        <div class="choices container hide">
-            <p id="time" style="margin-bottom: 30px"></p>
+      <div id="startView">
+        <p>soccer quiz challenge</p>
+        <button value="start" id="start-quiz">start quiz</button>
+      </div>
+      <div class="choices container hide">
+        <p id="time" style="margin-bottom: 30px"></p>
 
-            <p class="question-text">
-                Which country won the World Cup in 1998?
-            </p>
-            <p class="question-text">
-                Which country won the World Cup in 2002?
-            </p>
-            <p class="question-text">
-                Which country won the World Cup in 2006?
-            </p>
+        <p class="question-text">Which country won the World Cup in 1998?</p>
+        <!-- <p class="question-text">Which country won the World Cup in 2002?</p>
+        <p class="question-text">Which country won the World Cup in 2006?</p> -->
+      </div>
 
-        </div>
+      <div id="answer" class="hide">
+        <button class="possibility">Germany</button>
 
-        <div class="hide">
-            <button class="possibility">
-                Germany
-            </button>
+        <button class="possibility">Italy</button>
 
-            <button class="possibility">
-                Italy
-            </button>
+        <button class="possibility">Argentina</button>
 
-            <button class="possibility">
-                Argentina
-            </button>
+        <button class="possibility">France</button>
+      </div>
 
-            <button class="possibility">
-                France
-            </button>
-        </div>
+      <div class="hide">
+        <p>Enter your initial?</p>
+        <form class="initials-form">
+          <input type="text" /> <button type="submit">submit</button>
+        </form>
+      </div>
 
-        <div class="hide">
-            <button class="chioce">
-                Germany
-            </button>
-
-            <button class="chioce">
-                Brazil
-            </button>
-
-            <button class="chioce">
-                Spain
-            </button>
-
-            <button class="chioce">
-                France
-            </button>
-        </div>
-
-        <div class="hide">
-            <button class="option">
-                Portugal
-            </button>
-
-            <button class="option">
-                Italy
-            </button>
-
-            <button class="option">
-                Argentina
-            </button>
-
-            <button class="option">
-                France
-            </button>
-        </div>
-
-        <div class="hide">
-            <p>
-                Enter your initial?
-            </p>
-            <form class="initials-form"> <input type="text"> <button type="submit">
-                    submit
-                </button></form>
-        </div>
-
-        <!-- <div>
+      <!-- <div>
             <p>
                 Highscores
             </p>
@@ -108,10 +54,7 @@
             </button>
 
         </div> -->
-
     </main>
     <script src="./index.js"></script>
-</body>
-
-
+  </body>
 </html>
