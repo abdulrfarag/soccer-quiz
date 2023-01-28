@@ -99,3 +99,10 @@ table {
 text-align: center;
     /* height: min-content; */
 }
+
+div p{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    line-height: 1;
+}
