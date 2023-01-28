@@ -13,3 +13,12 @@ function renderTable() {
 
     // create a TR for each entry
     var tr = document.createElement("tr");
+
+    tr.innerHTML = `<td>${index + 1}</td><td>${element.initials}</td><td>${
+      element.score
+    }</td>`;
+
+    //append the TR to the tablebody
+    tableBody.appendChild(tr);
+  }
+}
