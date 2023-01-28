@@ -12,7 +12,7 @@ var scoreTableEl = document.querySelector("#score-table");
 
 var restartGameEl = document.querySelector(".restart-game");
 let currentQuestionIndex = 0;
-
+// question array
 let questions = [
   {
     question: "Which country won the World Cup in 1998?",
@@ -33,11 +33,11 @@ let questions = [
 
 var time = questions.length * 15;
 var timerId;
-
+// loop over questions
 for (var i = 0; i < option.length; i++) {
   option[i].addEventListener("click", getQuestion);
 }
-
+// start quiz
 let startQuiz = document.querySelector("#start-quiz");
 startQuiz.addEventListener("click", function () {
   document.querySelector("#startView").setAttribute("class", "hide");
@@ -123,12 +123,9 @@ function submitScore(e) {
       ])
     );
   }
-  location.replace("hs.html");
+  location.replace('assets/hs.html');
 }
-// restart game button
-restartGameEl.addEventListener("click", function () {
-  location.reload();
-});
+
 
 // initials from action
 initialsFormEl.addEventListener("submit", submitScore);
@@ -137,5 +134,5 @@ initialsFormEl.addEventListener("submit", submitScore);
 let viewHighScore = document.querySelector(".view-high-score");
 
 viewHighScore.addEventListener("click", () => {
-  location.replace("hs.html");
+  location.replace('assets/hs.html');
 });

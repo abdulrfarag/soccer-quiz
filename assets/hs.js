@@ -24,3 +24,11 @@ function renderTable() {
     tableBody.appendChild(tr);
   }
 }
+
+var restartGameEl = document.querySelector(".restart-game");
+
+// restart game button
+restartGameEl.addEventListener("click", function () {
+  location.replace('/index.html');
+});
+
