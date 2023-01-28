@@ -1,3 +1,4 @@
+// 
 let questionText = document.querySelector(".question-text");
 let option = document.querySelectorAll(".option");
 var timerEl = document.querySelector("#time");
@@ -8,8 +9,8 @@ var scoreEl = document.querySelector(".score");
 var initialsFormEl = document.querySelector(".initials-form");
 var submittedEl = document.querySelector("#submitted");
 var scoreTableEl = document.querySelector("#score-table");
-var tableBody = document.querySelector("#tableBody")
-var restartGameEl = document.querySelector(".restart-game")
+
+var restartGameEl = document.querySelector(".restart-game");
 let currentQuestionIndex = 0;
 
 let questions = [
@@ -98,7 +99,6 @@ function endGame() {
   choicesEl.classList.add("hide");
   answerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
-  if (localStorage.getItem('scoreArray')) renderTable()
   scoreEl.textContent = `your final score is ${time >= 0 ? time : 0}`;
 }
 
@@ -107,8 +107,6 @@ function submitScore(e) {
 
   console.log(time >= 0 ? time : 0);
   console.log(submittedEl.value);
-
-
 
   if (localStorage.getItem("scoreArray")) {
     const arrayFromStorage = JSON.parse(localStorage.getItem("scoreArray"));
@@ -125,29 +123,19 @@ function submitScore(e) {
       ])
     );
   }
-  renderTable()
+  location.replace("hs.html");
 }
+// restart game button
+restartGameEl.addEventListener("click", function () {
+  location.reload();
+});
 
-function renderTable() {
-    scoreTableEl.classList.remove('hide')
-    // clear out the TableBody
-    tableBody.innerHTML=""
-    const arrayFromStorage = JSON.parse(localStorage.getItem("scoreArray"));
-
-    for (let index = 0; index < arrayFromStorage.length; index++) {
-        const element = arrayFromStorage[index];
-        var tr= document.createElement ('tr')
-        tr.innerHTML=`<td>${index+1}</td><td>${element.initials}</td><td>${element.score}</td>`
-        tableBody.appendChild (tr)
-    }
-
-    // get the array out of storage
-    // loop over the array
-    // create a TR for each entry
-    //append the TR to the tablebody
-}
-restartGameEl.addEventListener("click", function() {
-    location.reload()
-})
-
+// initials from action
 initialsFormEl.addEventListener("submit", submitScore);
+
+// view high score table
+let viewHighScore = document.querySelector(".view-high-score");
+
+viewHighScore.addEventListener("click", () => {
+  location.replace("hs.html");
+});
