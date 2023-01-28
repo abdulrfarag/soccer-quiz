@@ -10,7 +10,7 @@
   --hue-wrong: 0;
   --hue-correct: 145;
 }
-
+/* body style */
 body {
     font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -32,6 +32,8 @@ body.wrong {
   --hue: var(--hue-wrong);
 }
 
+/* .container style */
+
 .container {
   width: 800px;
   max-width: 80%;
@@ -40,7 +42,7 @@ body.wrong {
   padding: 10px;
   box-shadow: 0 0 10px 2px;
 }
-
+/* btn style */
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -86,20 +88,21 @@ body.wrong {
 .hide {
   display: none;
 }
+/* view high score style */
 
 .view-high-score {
   padding: 30px;
 
 }
-
+/* table stayle  */
 table {
 
     border: 2px solid ;
     margin: auto;
 text-align: center;
-    /* height: min-content; */
+    
 }
-
+ /* div p style */
 div p{
     color: white;
     font-family: 'Open Sans', sans-serif;
