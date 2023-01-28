@@ -10,3 +10,6 @@ function renderTable() {
   for (let index = 0; index < arrayFromStorage.length; index++) {
     // loop over the array
     const element = arrayFromStorage[index];
+
+    // create a TR for each entry
+    var tr = document.createElement("tr");
