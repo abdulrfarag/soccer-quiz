@@ -12,4 +12,4 @@ https://github.com/abdulrfarag/soccer-quiz
 
 
 ## link to the webpage 
-http://127.0.0.1:5500/index.html
+https://abdulrfarag.github.io/soccer-quiz/
